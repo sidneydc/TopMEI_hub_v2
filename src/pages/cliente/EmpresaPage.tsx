@@ -548,7 +548,8 @@ export function EmpresaPage() {
                           </p>
                         </div>
                       </div>
-                      <div className="flex gap-2">
+                      <div className="flex gap-2 items-center">
+                        <span className="text-sm font-medium text-gray-700">Cadastro Topmei:</span>
                         <Badge 
                           variant={
                             empresa.status_cadastro === 'ativa' ? 'success' : 
@@ -564,11 +565,6 @@ export function EmpresaPage() {
                            empresa.status_cadastro === 'pendente' ? 'Pendente' :
                            empresa.status_cadastro}
                         </Badge>
-                        {empresa.status_cnpj && (
-                          <Badge variant={empresa.status_cnpj === 'ativo' ? 'success' : 'error'}>
-                            CNPJ {empresa.status_cnpj === 'ativo' ? 'Ativo' : empresa.status_cnpj}
-                          </Badge>
-                        )}
                       </div>
                     </div>
 
