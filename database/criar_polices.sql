@@ -24,6 +24,7 @@ ALTER TABLE empresa_servicos ENABLE ROW LEVEL SECURITY;
 ALTER TABLE cobranca_plano ENABLE ROW LEVEL SECURITY;
 ALTER TABLE cobranca_servicos ENABLE ROW LEVEL SECURITY;
 ALTER TABLE nfse ENABLE ROW LEVEL SECURITY;
+ALTER TABLE certificados_digitais ENABLE ROW LEVEL SECURITY;
 ALTER TABLE templates_orcamento ENABLE ROW LEVEL SECURITY;
 ALTER TABLE orcamento ENABLE ROW LEVEL SECURITY;
 ALTER TABLE notificacao ENABLE ROW LEVEL SECURITY;
@@ -516,6 +517,137 @@ CREATE POLICY "Admin can view auditoria" ON auditoria
       AND p.role = 'administrador'
     )
   );
+
+-- =====================================================
+-- POLÍTICAS: certificados_digitais
+-- =====================================================
+
+-- Usuários podem ver seus próprios certificados
+DROP POLICY IF EXISTS "Users can view their own certificates" ON certificados_digitais;
+CREATE POLICY "Users can view their own certificates"
+  ON certificados_digitais FOR SELECT
+  TO authenticated
+  USING (user_id = auth.uid());
+
+-- Usuários podem inserir seus próprios certificados
+DROP POLICY IF EXISTS "Users can insert their own certificates" ON certificados_digitais;
+CREATE POLICY "Users can insert their own certificates"
+  ON certificados_digitais FOR INSERT
+  TO authenticated
+  WITH CHECK (user_id = auth.uid());
+
+-- Usuários podem atualizar seus próprios certificados
+DROP POLICY IF EXISTS "Users can update their own certificates" ON certificados_digitais;
+CREATE POLICY "Users can update their own certificates"
+  ON certificados_digitais FOR UPDATE
+  TO authenticated
+  USING (user_id = auth.uid())
+  WITH CHECK (user_id = auth.uid());
+
+-- Usuários podem deletar seus próprios certificados
+DROP POLICY IF EXISTS "Users can delete their own certificates" ON certificados_digitais;
+CREATE POLICY "Users can delete their own certificates"
+  ON certificados_digitais FOR DELETE
+  TO authenticated
+  USING (user_id = auth.uid());
+
+-- Administradores podem ver todos os certificados
+DROP POLICY IF EXISTS "Admins can view all certificates" ON certificados_digitais;
+CREATE POLICY "Admins can view all certificates"
+  ON certificados_digitais FOR SELECT
+  TO authenticated
+  USING (
+    EXISTS (
+      SELECT 1 FROM user_perfis up
+      INNER JOIN perfil p ON up.perfil_id = p.id
+      WHERE up.user_id = auth.uid()
+      AND p.role = 'administrador'
+      AND up.ativo = true
+    )
+  );
+
+-- Administradores podem gerenciar todos os certificados
+DROP POLICY IF EXISTS "Admins can manage all certificates" ON certificados_digitais;
+CREATE POLICY "Admins can manage all certificates"
+  ON certificados_digitais FOR ALL
+  TO authenticated
+  USING (
+    EXISTS (
+      SELECT 1 FROM user_perfis up
+      INNER JOIN perfil p ON up.perfil_id = p.id
+      WHERE up.user_id = auth.uid()
+      AND p.role = 'administrador'
+      AND up.ativo = true
+    )
+  )
+  WITH CHECK (
+    EXISTS (
+      SELECT 1 FROM user_perfis up
+      INNER JOIN perfil p ON up.perfil_id = p.id
+      WHERE up.user_id = auth.uid()
+      AND p.role = 'administrador'
+      AND up.ativo = true
+    )
+  );
+
+-- Contadores podem ver certificados
+DROP POLICY IF EXISTS "Contadores can view certificates" ON certificados_digitais;
+CREATE POLICY "Contadores can view certificates"
+  ON certificados_digitais FOR SELECT
+  TO authenticated
+  USING (
+    EXISTS (
+      SELECT 1 FROM user_perfis up
+      INNER JOIN perfil p ON up.perfil_id = p.id
+      WHERE up.user_id = auth.uid()
+      AND p.role = 'contador'
+      AND up.ativo = true
+    )
+  );
+
+-- =====================================================
+-- STORAGE: Bucket certificados (Certificados Digitais)
+-- =====================================================
+
+-- Criar bucket certificados
+INSERT INTO storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+VALUES (
+  'certificados',
+  'certificados',
+  true,
+  5242880,
+  ARRAY['application/x-pkcs12', 'application/pkcs12']
+)
+ON CONFLICT (id) DO NOTHING;
+
+-- Usuários autenticados podem fazer upload de certificados
+DROP POLICY IF EXISTS "Authenticated users can upload certificates" ON storage.objects;
+CREATE POLICY "Authenticated users can upload certificates"
+  ON storage.objects FOR INSERT
+  TO authenticated
+  WITH CHECK (bucket_id = 'certificados');
+
+-- Usuários autenticados podem ver certificados
+DROP POLICY IF EXISTS "Authenticated users can view certificates" ON storage.objects;
+CREATE POLICY "Authenticated users can view certificates"
+  ON storage.objects FOR SELECT
+  TO authenticated
+  USING (bucket_id = 'certificados');
+
+-- Usuários autenticados podem atualizar certificados
+DROP POLICY IF EXISTS "Authenticated users can update certificates" ON storage.objects;
+CREATE POLICY "Authenticated users can update certificates"
+  ON storage.objects FOR UPDATE
+  TO authenticated
+  USING (bucket_id = 'certificados')
+  WITH CHECK (bucket_id = 'certificados');
+
+-- Usuários autenticados podem deletar certificados
+DROP POLICY IF EXISTS "Authenticated users can delete certificates" ON storage.objects;
+CREATE POLICY "Authenticated users can delete certificates"
+  ON storage.objects FOR DELETE
+  TO authenticated
+  USING (bucket_id = 'certificados');
 
 -- =====================================================
 -- STORAGE: Bucket doc_cus (Documentos dos Clientes)
