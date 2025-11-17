@@ -551,15 +551,18 @@ export function EmpresaPage() {
                       <div className="flex gap-2">
                         <Badge 
                           variant={
-                            empresa.status_cadastro === 'aprovado' ? 'success' : 
+                            empresa.status_cadastro === 'ativa' ? 'success' : 
                             empresa.status_cadastro === 'rejeitado' ? 'error' : 
+                            empresa.status_cadastro === 'suspensa' ? 'error' :
                             'warning'
                           }
                         >
-                          {empresa.status_cadastro === 'aguardando_aprovacao' ? 'Aguardando' :
-                           empresa.status_cadastro === 'aprovado' ? 'Aprovado' :
-                           empresa.status_cadastro === 'rejeitado' ? 'Rejeitado' :
-                           'Pendente'}
+                          {empresa.status_cadastro === 'aguardando_aprovacao' ? 'Aguardando Aprovação' :
+                           empresa.status_cadastro === 'ativa' ? 'Ativa' :
+                           empresa.status_cadastro === 'rejeitado' ? 'Rejeitada' :
+                           empresa.status_cadastro === 'suspensa' ? 'Suspensa' :
+                           empresa.status_cadastro === 'pendente' ? 'Pendente' :
+                           empresa.status_cadastro}
                         </Badge>
                         {empresa.status_cnpj && (
                           <Badge variant={empresa.status_cnpj === 'ativo' ? 'success' : 'error'}>
