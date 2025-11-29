@@ -2,7 +2,7 @@
 
 ## 📋 Visão Geral
 
-O sistema de auditoria registra **automaticamente** todas as operações de INSERT, UPDATE e DELETE em todas as tabelas críticas do TopMEI Hub.
+O sistema de auditoria registra **automaticamente** todas as operações de INSERT, UPDATE e DELETE em todas as tabelas críticas do TopMEI.
 
 ## 🎯 Funcionalidades
 

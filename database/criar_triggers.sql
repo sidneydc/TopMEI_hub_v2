@@ -1,11 +1,4 @@
--- =====================================================
--- TopMEI Hub - Triggers e Funções
--- Sistema de Gestão de MEI
--- =====================================================
--- Este arquivo contém todos os triggers e funções do sistema
--- Execute após criar_tabelas.sql
--- =====================================================
-
+-- TopMEI - Triggers e Funções
 -- =====================================================
 -- FUNÇÃO: Atribuir perfil automático para novos usuários
 -- =====================================================

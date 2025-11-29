@@ -1,11 +1,4 @@
--- =====================================================
--- TopMEI Hub - Políticas RLS (Row Level Security)
--- Sistema de Gestão de MEI
--- =====================================================
--- Este arquivo contém todas as políticas de segurança RLS
--- Execute após criar_tabelas.sql e criar_triggers.sql
--- =====================================================
-
+-- TopMEI - Políticas RLS (Row Level Security)
 -- =====================================================
 -- HABILITAR RLS EM TODAS AS TABELAS
 -- =====================================================

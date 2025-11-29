@@ -1,8 +1,8 @@
-# Arquitetura do Sistema TopMEI Hub
+# Arquitetura do Sistema TopMEI
 
 ## Visão Geral
 
-O TopMEI Hub é uma aplicação web completa para gestão de Microempreendedores Individuais (MEIs), desenvolvida com arquitetura moderna e escalável.
+O TopMEI é uma aplicação web completa para gestão de Microempreendedores Individuais (MEIs), desenvolvida com arquitetura moderna e escalável.
 
 ## Stack Tecnológica
 

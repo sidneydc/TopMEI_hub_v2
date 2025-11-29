@@ -1,4 +1,4 @@
--- POLICIES E TRIGGERS - TopMEI Hub
+-- POLICIES E TRIGGERS - TopMEI
 -- Execute este script no SQL Editor do Supabase APÓS executar o schema.sql
 
 -- ============================================================================

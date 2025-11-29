@@ -1,9 +1,4 @@
--- Inserir Planos de Exemplo no Sistema TopMEI Hub
--- Execute este script após executar o schema.sql
-
--- Limpar planos existentes (opcional)
--- DELETE FROM planos;
-
+-- Inserir Planos de Exemplo no Sistema TopMEI
 -- Planos Mensais
 INSERT INTO planos (tipo, nome, descrição, valor, ativo) VALUES
 ('mensal', 'Básico', 'Ideal para quem está começando. Inclui emissão de notas fiscais e gestão básica de documentos.', 29.90, true),

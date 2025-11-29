@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-A aplicação TopMEI Hub utiliza a API pública **Open CNPJA** para consultar dados cadastrais de empresas na Receita Federal através do CNPJ.
+A aplicação TopMEI utiliza a API pública **Open CNPJA** para consultar dados cadastrais de empresas na Receita Federal através do CNPJ.
 
 ## API Utilizada: Open CNPJA
 

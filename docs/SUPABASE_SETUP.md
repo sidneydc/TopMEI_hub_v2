@@ -1,4 +1,4 @@
-# Guia de Configuração do Supabase para TopMEI Hub
+# Guia de Configuração do Supabase para TopMEI
 
 ## 1. Criar Projeto no Supabase
 

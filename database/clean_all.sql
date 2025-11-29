@@ -1,10 +1,4 @@
--- =====================================================
--- TopMEI Hub - Limpeza Completa do Banco de Dados
--- =====================================================
--- ATENÇÃO: Este script DELETA TODOS OS DADOS do sistema
--- Use apenas em ambiente de desenvolvimento/testes
--- =====================================================
-
+-- TopMEI - Limpeza Completa do Banco de Dados
 -- =====================================================
 -- AJUSTAR CONSTRAINT DE AUDITORIA (FIX DEFINITIVO)
 -- =====================================================

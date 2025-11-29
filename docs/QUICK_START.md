@@ -1,4 +1,4 @@
-# Guia de Início Rápido - TopMEI Hub
+# Guia de Início Rápido - TopMEI
 
 ## 🚀 Começando em 5 minutos
 

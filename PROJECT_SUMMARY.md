@@ -1,4 +1,4 @@
-# 📦 TopMEI Hub - Projeto Completo
+# 📦 TopMEI - Projeto Completo
 
 ## ✅ O que foi criado
 
@@ -302,7 +302,7 @@ MIT License - Livre para uso comercial e pessoal
 
 <div align="center">
 
-**🎊 Projeto TopMEI Hub - Completo e Documentado 🎊**
+**🎊 Projeto TopMEI - Completo e Documentado 🎊**
 
 Desenvolvido com ❤️ usando React, TypeScript e Supabase
 

@@ -4,6 +4,7 @@ import { DashboardLayout } from '@/components/layout/DashboardLayout'
 import { Card } from '@/components/ui/Card'
 import { Alert } from '@/components/ui/Alert'
 import { EmptyEmpresaState } from '@/components/ui/EmptyEmpresaState'
+import { Badge } from '@/components/ui/Badge'
 import { useEmpresasUsuario } from '@/hooks/useEmpresa'
 import { supabase } from '@/lib/supabase'
 import { 
@@ -441,6 +442,13 @@ export function DocumentosPage() {
     return documentos.find(doc => doc.tipo_documento_id === tipoId)
   }
 
+  // Formatar CNPJ simples
+  const formatarCNPJ = (valor?: string) => {
+    if (!valor) return '-'
+    const cnpj = valor.replace(/\D/g, '')
+    return cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5')
+  }
+
   if (loadingEmpresas) {
     return (
       <DashboardLayout>
@@ -484,18 +492,28 @@ export function DocumentosPage() {
             {empresas.length === 0 ? (
               <EmptyEmpresaState />
             ) : (
-              <select
-                value={empresaSelecionada}
-                onChange={(e) => setEmpresaSelecionada(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              >
-                <option value="">Selecione uma empresa...</option>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {empresas.map((empresa) => (
-                  <option key={empresa.id} value={empresa.id}>
-                    {empresa.razao_social} - CNPJ: {empresa.cnpj?.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5')}
-                  </option>
+                  <button
+                    key={empresa.id}
+                    type="button"
+                    onClick={() => setEmpresaSelecionada(empresa.id)}
+                    className={`text-left p-4 rounded-lg border transition-shadow hover:shadow-sm ${empresaSelecionada === empresa.id ? 'border-primary-600 bg-primary-50 shadow-md' : 'border-gray-200 bg-white'}`}
+                  >
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h4 className="font-semibold text-gray-900">{empresa.razao_social}</h4>
+                        <p className="text-sm text-gray-500">CNPJ: {formatarCNPJ(empresa.cnpj)}</p>
+                      </div>
+                      <div className="ml-3">
+                        <Badge variant={empresa.status_cadastro === 'ativa' ? 'success' : empresa.status_cadastro === 'rejeitado' ? 'error' : 'warning'}>
+                          {empresa.status_cadastro === 'aguardando_aprovacao' ? 'Aguardando' : empresa.status_cadastro}
+                        </Badge>
+                      </div>
+                    </div>
+                  </button>
                 ))}
-              </select>
+              </div>
             )}
           </div>
         </Card>

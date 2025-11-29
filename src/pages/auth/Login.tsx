@@ -74,7 +74,7 @@ export function Login() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-primary-100 px-4">
       <div className="max-w-md w-full bg-white rounded-lg shadow-xl p-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">TopMEI Hub</h1>
+          <h1 className="text-3xl font-bold text-gray-900">TopMEI</h1>
           <p className="text-gray-600 mt-2">Sistema de Gestão</p>
         </div>
 

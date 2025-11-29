@@ -255,7 +255,7 @@ export function ContratarServicosPage() {
                 </h2>
                 <p className="text-gray-600 mb-4">
                   Você tem {empresas.length} {empresas.length === 1 ? 'empresa cadastrada' : 'empresas cadastradas'}, 
-                  mas {empresas.length === 1 ? 'ela ainda não está ativa' : 'nenhuma delas está ativa'}.
+                  mas {empresas.length === 1 ? 'ela ainda não está ativa' : 'nenhuma delas possui cadastro ativo'}.
                 </p>
                 
                 {/* Mostrar status de cada empresa */}

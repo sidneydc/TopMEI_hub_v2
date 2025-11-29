@@ -1,4 +1,4 @@
-# Database Setup - TopMEI Hub
+# Database Setup - TopMEI
 
 Este diretório contém os scripts SQL organizados para fácil replicação do banco de dados.
 

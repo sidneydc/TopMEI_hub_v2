@@ -14,7 +14,9 @@ import {
   LogOut,
   FileSpreadsheet,
   Briefcase
+  , Lock
 } from 'lucide-react'
+import { useEmpresa } from '@/hooks/useEmpresa'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 export function Sidebar() {
@@ -68,11 +70,14 @@ export function Sidebar() {
   }
 
   const menuItems = getMenuItems()
+  const { empresa } = useEmpresa(user?.id)
+  const isEmpresaAtiva = empresa?.status_cadastro === 'ativa'
+  const approvalRequiredPaths = ['/emissor-orcamento', '/nfse', '/prospera-mei']
 
   return (
     <aside className="bg-secondary-900 text-white w-64 min-h-screen flex flex-col shadow-xl">
       <div className="p-4 border-b border-secondary-800 bg-secondary-800">
-        <h1 className="text-xl font-bold text-primary-400">TopMEI Hub</h1>
+        <h1 className="text-xl font-bold text-primary-400">TopMEI</h1>
         <p className="text-sm text-gray-300 mt-1">{user?.email}</p>
         
         {/* Botão Sair */}
@@ -90,6 +95,24 @@ export function Sidebar() {
           {menuItems.map((item) => {
             const Icon = item.icon
             const isActive = location.pathname === item.path
+            const needsApproval = approvalRequiredPaths.includes(item.path)
+
+            // Se item requer aprovação e empresa não está ativa, mostrar como desabilitado
+            if (needsApproval && !isEmpresaAtiva) {
+              return (
+                <li key={item.path}>
+                  <div
+                    title="Somente empresas com cadastro aprovado podem acessar"
+                    className={`flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all text-gray-500 cursor-not-allowed bg-secondary-900/30`}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="flex-1">{item.name}</span>
+                    <Lock className="w-4 h-4 text-gray-400" />
+                  </div>
+                </li>
+              )
+            }
+
             return (
               <li key={item.path}>
                 <Link

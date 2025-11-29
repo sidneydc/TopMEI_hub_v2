@@ -1,4 +1,4 @@
--- TopMEI Hub - Database Schema
+-- TopMEI - Database Schema
 -- Sistema de Gestão de MEI
 
 -- Tabela de Perfis de Usuário

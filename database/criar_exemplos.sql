@@ -1,11 +1,4 @@
--- =====================================================
--- TopMEI Hub - Dados de Exemplo
--- Sistema de Gestão de MEI
--- =====================================================
--- Este arquivo contém dados iniciais e de exemplo
--- Execute após criar_tabelas.sql, criar_triggers.sql e criar_polices.sql
--- =====================================================
-
+-- TopMEI - Dados de Exemplo
 -- =====================================================
 -- PERFIS DO SISTEMA
 -- =====================================================

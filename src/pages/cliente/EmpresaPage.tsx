@@ -484,6 +484,8 @@ export function EmpresaPage() {
       
       // Recarregar lista de empresas
       await recarregar()
+      // Após cadastrar com sucesso, redirecionar para dashboard
+      navigate('/dashboard')
     } catch (error) {
       console.error('Erro ao salvar empresa:', error)
       setErrorConsulta('Erro ao salvar os dados da empresa')
@@ -1200,7 +1202,7 @@ export function EmpresaPage() {
                         <a href="/politica-privacidade" target="_blank" className="text-primary-600 hover:underline font-medium">
                           Política de Privacidade
                         </a>
-                        {' '}dos serviços TopMEI Hub. Confirmo que as informações fornecidas são verdadeiras e estou ciente das responsabilidades do cadastro.
+                        {' '}dos serviços TopMEI. Confirmo que as informações fornecidas são verdadeiras e estou ciente das responsabilidades do cadastro.
                       </label>
                     </div>
                   </div>
@@ -1240,44 +1242,7 @@ export function EmpresaPage() {
             </Card>
           )}
 
-          {/* Informações sobre o MEI */}
-          <Card title="Por que cadastrar seu MEI?" className="max-w-3xl mx-auto">
-            <div className="space-y-3">
-              <div className="flex items-start gap-3">
-                <div className="bg-primary-100 p-2 rounded">
-                  <FileText className="w-5 h-5 text-primary-600" />
-                </div>
-                <div>
-                  <h4 className="font-semibold">Gestão de Documentos</h4>
-                  <p className="text-sm text-gray-600">
-                    Organize todos os documentos da sua empresa em um só lugar
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="bg-primary-100 p-2 rounded">
-                  <FileText className="w-5 h-5 text-primary-600" />
-                </div>
-                <div>
-                  <h4 className="font-semibold">Emissão de NFSe</h4>
-                  <p className="text-sm text-gray-600">
-                    Emita notas fiscais de serviço de forma simples e rápida
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="bg-primary-100 p-2 rounded">
-                  <FileText className="w-5 h-5 text-primary-600" />
-                </div>
-                <div>
-                  <h4 className="font-semibold">Suporte Contábil</h4>
-                  <p className="text-sm text-gray-600">
-                    Tenha acesso a contadores especializados em MEI
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Card>
+          {/* (Informational card removed as requested) */}
         </div>
       </DashboardLayout>
     )

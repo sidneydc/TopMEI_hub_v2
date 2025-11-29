@@ -1,4 +1,4 @@
-# Exemplos de Uso - TopMEI Hub
+# Exemplos de Uso - TopMEI
 
 ## 📝 Autenticação
 

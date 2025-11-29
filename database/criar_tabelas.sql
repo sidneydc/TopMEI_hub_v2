@@ -1,11 +1,4 @@
--- =====================================================
--- TopMEI Hub - Criação de Tabelas
--- Sistema de Gestão de MEI
--- =====================================================
--- Este arquivo contém todas as definições de tabelas do sistema
--- Execute este arquivo para criar a estrutura completa do banco de dados
--- =====================================================
-
+-- TopMEI - Criação de Tabelas
 -- =====================================================
 -- TABELAS DE AUTENTICAÇÃO E PERFIS
 -- =====================================================

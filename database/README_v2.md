@@ -1,6 +1,6 @@
-# TopMEI Hub - Database Scripts  v2.0
+# TopMEI - Database Scripts  v2.0
 
-Sistema de gerenciamento de banco de dados para o TopMEI Hub v2.
+Sistema de gerenciamento de banco de dados para o TopMEI v2.
 
 ## 📋 Ordem de Execução dos Scripts
 

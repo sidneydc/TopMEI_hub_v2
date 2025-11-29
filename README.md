@@ -1,4 +1,4 @@
-# 🚀 TopMEI Hub - Sistema de Gestão para MEI
+# 🚀 TopMEI - Sistema de Gestão para MEI
 
 <div align="center">
 
