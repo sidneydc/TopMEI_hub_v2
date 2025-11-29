@@ -10,6 +10,7 @@ import { ContadorDashboard } from '@/pages/contador/ContadorDashboard'
 import { AdminDashboard } from '@/pages/admin/AdminDashboard'
 import { EmpresaPage } from '@/pages/cliente/EmpresaPage'
 import { AbrirMEI } from '@/pages/cliente/AbrirMEI'
+import ProsperaMEI from '@/pages/cliente/ProsperaMEI'
 import { DocumentosPage } from '@/pages/cliente/DocumentosPage'
 import { ContadorDocumentosPage } from '@/pages/contador/ContadorDocumentosPage'
 import { ServicosExecutarPage } from '@/pages/contador/ServicosExecutarPage'
@@ -84,6 +85,15 @@ function App() {
             element={
               <ProtectedRoute allowedRoles={['cliente']}>
                 <AbrirMEI />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/prospera-mei"
+            element={
+              <ProtectedRoute allowedRoles={['cliente']}>
+                <ProsperaMEI />
               </ProtectedRoute>
             }
           />

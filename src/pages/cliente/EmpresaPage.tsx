@@ -515,16 +515,37 @@ export function EmpresaPage() {
             <p className="text-gray-600 mt-1">Gerencie suas empresas MEI</p>
           </div>
           {!showCadastroForm && empresas.length > 0 && (
-            <button
-              onClick={() => {
-                setShowCadastroForm(true)
-                carregarPlanos()
-              }}
-              className="flex items-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700"
-            >
-              <Plus className="w-5 h-5" />
-              Cadastrar Nova Empresa
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => navigate('/abrir-mei')}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-primary-600 text-primary-600 bg-white hover:bg-primary-50"
+              >
+                <Building2 className="w-5 h-5" />
+                Abrir MEI
+              </button>
+
+              <button
+                type="button"
+                onClick={() => navigate('/prospera-mei')}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-primary-600 text-primary-600 bg-white hover:bg-primary-50"
+                title="Prospera MEI"
+              >
+                <FileText className="w-5 h-5" />
+                Prospera MEI
+              </button>
+
+              <button
+                onClick={() => {
+                  setShowCadastroForm(true)
+                  carregarPlanos()
+                }}
+                className="flex items-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700"
+              >
+                <Plus className="w-5 h-5" />
+                Cadastrar Nova Empresa
+              </button>
+            </div>
           )}
         </div>
 

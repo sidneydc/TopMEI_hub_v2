@@ -85,6 +85,13 @@ CREATE POLICY "Users can view own empresa" ON empresa
   FOR SELECT TO authenticated
   USING (auth.uid() = user_id);
 
+
+-- Cliente vê apenas suas empresas
+DROP POLICY IF EXISTS "Users can view own empresa" ON empresa;
+CREATE POLICY "Users can view own empresa" ON empresa
+  FOR SELECT TO authenticated
+  USING (auth.uid() = user_id);
+
 -- Cliente insere suas empresas
 DROP POLICY IF EXISTS "Users can insert own empresa" ON empresa;
 CREATE POLICY "Users can insert own empresa" ON empresa
@@ -138,15 +145,6 @@ CREATE POLICY "Admin can do all on empresas" ON empresa
       AND up.ativo = true
     )
   );
-
--- =====================================================
--- POLÍTICAS: cnaes_secundarios e inscricoes
--- =====================================================
-
--- CNAEs Secundários seguem as mesmas regras de empresa
-DROP POLICY IF EXISTS "Users can manage own cnaes" ON cnaes_secundarios;
-CREATE POLICY "Users can manage own cnaes" ON cnaes_secundarios
-  FOR ALL TO authenticated
   USING (
     EXISTS (
       SELECT 1 FROM empresa 

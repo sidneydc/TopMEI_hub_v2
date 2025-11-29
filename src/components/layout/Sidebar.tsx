@@ -4,6 +4,7 @@ import {
   LayoutDashboard, 
   Building2, 
   FileText, 
+  TrendingUp,
   CreditCard, 
   Users, 
   Settings,
@@ -34,6 +35,7 @@ export function Sidebar() {
     { name: 'Contratar Serviços', path: '/contratar-servicos', icon: Package },
     { name: 'Emissor de Orçamento', path: '/emissor-orcamento', icon: FileSpreadsheet },
     { name: 'NFSe', path: '/nfse', icon: Receipt },
+    { name: 'Prospera MEI', path: '/prospera-mei', icon: TrendingUp },
     { name: 'Notificações', path: '/notificacoes', icon: Bell },
   ]
 
